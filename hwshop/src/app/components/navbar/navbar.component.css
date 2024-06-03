@@ -1,0 +1,13 @@
+.menu>li:not(:last-child)::after {
+    content: "|";
+    padding: 10px;
+  }
+  
+  .menu>li>a:hover {
+    cursor: pointer;
+    color: white;
+  }
+  .menu>li{
+    height: 100%;
+  }
+  

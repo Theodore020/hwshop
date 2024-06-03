@@ -1,0 +1,5 @@
+
+.box {
+  width: var(--safeWidth);
+  margin: auto;
+}

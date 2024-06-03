@@ -1,0 +1,10 @@
+<ul class="flex justify-between pt-[70px]" >
+    <li *ngFor="let item1 of tabTitle let i = index">
+        {{item1}}
+        <ul class="py-[30px]" >
+            <li  *ngFor="let item2 of tabContent[i]" >
+            <a href="" class="text-gray-400 hover:text-red-500 text-[12px]">{{item2}}</a>
+            </li>
+        </ul>
+    </li>
+</ul>

@@ -1,0 +1,100 @@
+<div class="h-full w-full">
+    <div class="w-full bg-[#000000] text-[#FFFFFF99] h-[36px]">
+        <app-safe-width>
+            <app-navbar></app-navbar>
+        </app-safe-width>
+    </div>
+    <app-safe-width>
+        <div class="bg-white flex justify-between">
+            <div class="flex">
+                <div>
+                    <img src="../../../assets/logo_app.png" alt="" class="w-[103px] h-[74px]">
+                </div>
+                <div class="mx-[50px] flex justify-end items-center text-[24px]">
+                    我的购物车
+                </div>
+            </div>
+            <div class=" flex justify-center items-center"> 
+                <nz-steps [nzCurrent]="0" nzSize="small" nzLabelPlacement="vertical">
+                    <nz-step  nzTitle="我的购物车" ></nz-step>
+                    <nz-step  nzTitle="填写核对订单"></nz-step>
+                    <nz-step  nzTitle="成功提交订单"></nz-step>
+                </nz-steps>
+            </div>
+            
+        </div>
+
+    </app-safe-width>
+
+    <div class="bg-[#f1f3f5] w-full h-full">
+        <app-safe-width>
+            <div class="h-[20px] bg-[#f1f3f5] w-full"></div>
+            <div class="flex px-[40px] bg-white justify-center items-center h-[30px]">
+                <label for="check1" class="flex items-center mr-[150px]">
+                    <input type="checkbox" id="check1">
+                    <span class="text-[14px]">全选</span>
+                </label>
+                <ul class="flex">
+                    <li class="w-[400px]">
+                        商品
+                    </li>
+                    <li class="mx-[40px]">
+                        单价
+                    </li>
+                    <li class="mx-[40px]">
+                        数量
+                    </li>
+                    <li class="mx-[40px]">
+                        小计
+                    </li>
+                    <li class="mx-[40px]">
+                        操作
+                    </li>
+                </ul>
+            </div>
+            <div class="h-[10px] bg-[#f1f3f5] w-full"></div>
+            <div class="flex px-[40px] bg-white justify-center items-center " *ngFor="let item of data">
+                <div class="flex justify-center items-center mr-[50px]">
+                    <input type="checkbox" id="check1">
+                    <img src="http://127.0.0.1:3000{{item[0].img_url}}" alt="" class="w-[100px] h-[100px]">
+                </div>
+
+                <ul class="flex">
+                    <li class="w-[440px]">
+                        {{item[0].name}} {{item[2]}} {{item[3]}}
+                    </li>
+                    <li class="mx-[40px]">
+                        {{item[0].money}}
+                    </li>
+                    <li class="mx-[20px] flex border border-black">
+                        <button class="w-[15px] h-[20px]" (click)="reduce(item[0].id)">-</button>
+                        <div class="w-[40px] flex justify-center">{{item[1]}}</div>
+                        <button class="w-[15px] h-[20px]" (click)="add(item[0].id)">+</button>
+                    </li>
+                    <li class="mx-[40px]">
+                        {{item[0].money*item[1]}}
+                    </li>
+                    <li class="mx-[40px]">
+                        <button class="text-red-500">删除</button>
+                    </li>
+                </ul>
+
+            </div>
+            <div class="h-[10px] bg-[#f1f3f5] w-full"></div>
+            <div class="flex justify-end items-center w-full bg-white">
+                <div class=" mr-[20px]">总计：<span class="text-red-500 text-[20px] font-bold">{{this.totalMoney}}</span></div>
+                <button class="bg-red-500 w-[200px] h-[60px] text-white" [routerLink]="'/settlement'">立即结算</button>
+            </div>
+            <div class="h-[10px] bg-[#f1f3f5] w-full"></div>
+        </app-safe-width>
+    </div>
+
+
+
+    <div class="bg-white">
+        <app-safe-width>
+
+            <app-tabbar></app-tabbar>
+        </app-safe-width>
+    </div>
+</div>

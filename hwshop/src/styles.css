@@ -1,0 +1,31 @@
+/* You can add global styles to this file, and also import other style files */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+@import "~ng-zorro-antd/ng-zorro-antd.min.css";
+
+body,html{
+    @apply h-full w-full
+}
+:root {
+    --safeWidth: 1201px
+  }
+
+  @media only screen and (min-width:992px) and (max-width:1200px){
+    :root{
+        --safeWidth:992px;
+    }
+  }
+  
+  @media only screen and (min-width:768px) and (max-width:991px){
+    :root{
+        --safeWidth:768px;
+    }
+  }
+  
+  @media only screen and (max-width:767px){
+    :root{
+        --safeWidth:100%;
+    }
+    
+  }

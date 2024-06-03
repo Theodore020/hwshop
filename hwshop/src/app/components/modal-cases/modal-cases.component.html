@@ -1,0 +1,57 @@
+<div class="modal-cases-component">
+  <form dForm [layout]="layoutDirection" ngForm [dValidateRules]="formRules['rule']" #userForm="dValidateRules" (dSubmit)="submitForm($event)">
+    <d-form-item>
+      <d-form-label [required]="true">收货人:</d-form-label>
+      <d-form-control>
+        <input class="border border-gray-500 w-full h-[30px] rounded-sm"
+          dTextInput
+          autocomplete="off"
+          name="name"
+          [(ngModel)]="name"
+          (ngModelChange)="formChange()"
+          [dValidateRules]="formRules['nameRules']">
+      </d-form-control>
+    </d-form-item>
+    <d-form-item>
+      <d-form-label [required]="true">手机号码:</d-form-label>
+      <d-form-control>
+        <input class="border border-gray-500 w-full h-[30px] rounded-sm"
+          dTextInput
+          autocomplete="off"
+          name="tel"
+          maxlength="20"
+          [(ngModel)]="tel"
+          placeholder="请输入11位手机号码"
+          (ngModelChange)="formChange()"
+          [dValidateRules]="formRules['telRules']">
+      </d-form-control>
+    </d-form-item>
+
+
+    <d-form-item>
+      <d-form-control class="flex ">
+        <d-form-label [required]="true">收货地址</d-form-label>
+
+        <select name="" id="" [(ngModel)]="provinceId" (change)="getProvinceList(provinceId)" [name]="'province'"
+          class="w-[140px] border border-gray-500 rounded-sm mx-[5px]">
+          <option [value]="item.id" *ngFor="let item of provinceList">{{item.area_name}}</option>
+        </select>
+        <select name="" id="" [(ngModel)]="cityId" (change)="getCityList(cityId)" [name]="'city'"
+          class="w-[140px] border border-gray-500 rounded-sm mx-[5px]">
+          <option [value]="item.id" *ngFor="let item of cityList">{{item.area_name}}</option>
+        </select>
+        <select name="" id="" [(ngModel)]="areaId"  [name]="'area'" class="w-[140px] border border-gray-500 rounded-sm mx-[5px]">
+          <option [value]="item.id" *ngFor="let item of areaList">{{item.area_name}}</option>
+        </select>
+
+      </d-form-control>
+    </d-form-item>
+    <d-form-item>
+      <d-form-label [required]="true">详细地址</d-form-label>
+      <d-form-control>
+        <textarea name="des" maxlength="50" placeholder="请输入描述信息" [(ngModel)]="des" (ngModelChange)="formChange()"
+          class="border border-gray-500 w-full h-[20px] rounded-sm"></textarea>
+      </d-form-control>
+    </d-form-item>
+  </form>
+</div>

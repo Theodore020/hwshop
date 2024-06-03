@@ -1,0 +1,117 @@
+<div class="h-full w-full relative">
+
+    <div class="w-full bg-[#000000] text-[#FFFFFF99] h-[36px]">
+        <app-safe-width>
+            <app-navbar></app-navbar>
+        </app-safe-width>
+    </div>
+    <app-safe-width>
+        <div class="bg-white flex justify-between">
+            <div class="flex">
+                <div>
+                    <img src="../../../assets/logo_app.png" alt="" class="w-[103px] h-[74px]">
+                </div>
+                <div class="mx-[50px] flex justify-end items-center text-[24px]">
+                    确认订单
+                </div>
+            </div>
+            <div class=" flex justify-center items-center" > 
+                <nz-steps [nzCurrent]="1" nzSize="small" nzLabelPlacement="vertical">
+                    <nz-step  nzTitle="我的购物车" ></nz-step>
+                    <nz-step  nzTitle="填写核对订单"></nz-step>
+                    <nz-step  nzTitle="成功提交订单"></nz-step>
+                </nz-steps>
+            </div>
+            
+        </div>
+
+    </app-safe-width>
+    <div class="bg-[#f1f3f5] w-full ">
+        <app-safe-width>
+            <div class="h-[10px] bg-[#f1f3f5] w-full"></div>
+            <div class="bg-white h-[200px] mt-[20px] py-[20px] px-[30px]">
+                <div class="flex justify-between">
+                    <div class="text-[20px]">收货地址</div>
+                    <button class="px-[20px] py-[5px] border border-gray-500 "
+                        (click)="openStandardDialog('standard')">新增收货地址</button>
+                </div>
+                <div class="border border-red-500 w-[700px] mt-[20px] py-[15px] " #addressBox>
+                    <div class="">
+                        <span class="mx-[20px]">{{name}}</span>
+                        <span>{{tel}}</span>
+                    </div>
+                    <div class="text-gray-500">
+                        <span class="ml-[20px] mr-[5px]">{{province}}</span>
+                        <span class="mr-[5px]">{{city}}</span>
+                        <span class="mr-[5px]">{{area}}</span>
+                        <span class="mr-[5px]">{{des}}</span>
+                    </div>
+                </div>
+            </div>
+            <div class="h-[20px] bg-[#f1f3f5] w-full"></div>
+            <div class="bg-white mt-[20px] py-[20px] px-[30px] flex">
+                <div class=" flex flex-col">
+                    <div class="flex  p-[20px] " *ngFor="let item of data">
+                        <div class=" w-[140px]  flex justify-center items-center  p-[20px]">
+                            <img src="http://127.0.0.1:3000{{item[0].img_url}}" alt="" class="h-full w-full">
+                        </div>
+                        <div class="flex flex-1 px-[50px] ">
+                            <div class="w-[350px]"> {{item[0].name}} {{item[2]}} {{item[3]}}</div>
+                            <div class="w-[150px]">x{{item[1]}}</div>
+                            <div>￥{{item[0].money*item[1]}}</div>
+                        </div>
+
+                    </div>
+
+                    <div class="flex border  p-[20px]">
+                        <div class=" w-[140px]  flex justify-center items-center  p-[20px]">
+                            发票信息
+                        </div>
+                        <div>
+                            <div class="px-[50px] text-gray-500 text-[12px]">注：如果商品由第三方卖家销售，则发票由第三方卖家开具。</div>
+                            <div class="flex flex-1 px-[50px] text-[14px]">
+                                <div class="mr-[20px]">电子普通发票 </div>
+                                <div class="mr-[20px]">个人</div>
+                                <div>修改</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="bg-[#f6f6f6]  w-[350px] flex-1 flex flex-col justify-between px-[10px]">
+                    <div>商品由 <span class="text-red-500 text-[20px]">华为商城</span> 选择合作快递</div>
+                    <div class="flex justify-end">
+                        <div class="text-[24px] text-red-500">结算金额：￥ {{this.totalMoney}}</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="h-[10px] bg-[#f1f3f5] w-full"></div>
+            <div class="bg-white mt-[20px] py-[20px] px-[30px] w-full">
+                <div class="flex items-end flex-col">
+                    <div>应付金额：<span class="text-red-500 text-[24px]">{{this.totalMoney}}</span></div>
+                    <div class="bg-[#fdf6f3] my-[15px]">
+                        <div>配送至： <span class="mr-[5px]">{{province}}</span>
+                            <span class="mr-[5px]">{{city}}</span>
+                            <span class="mr-[5px]">{{area}}</span>
+                            <span class="mr-[5px]">{{des}}</span>
+                        </div>
+                        <div class="ml-[50px]"> <span class="mx-[20px]">{{name}}</span>
+                            <span>{{tel}}</span>
+                        </div>
+                    </div>
+                    <div>
+                        <button class="bg-[#c01a1f] text-white px-[30px] py-[10px]">提交订单</button>
+                    </div>
+                </div>
+            </div>
+            <div class="h-[10px] bg-[#f1f3f5] w-full"></div>
+        </app-safe-width>
+    </div>
+
+    <div class="bg-white">
+        <app-safe-width>
+
+            <app-tabbar></app-tabbar>
+        </app-safe-width>
+    </div>
+</div>

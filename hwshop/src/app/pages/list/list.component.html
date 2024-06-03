@@ -1,0 +1,101 @@
+<div class="h-full w-full">
+    <div class="w-full bg-[#000000] text-[#FFFFFF99] h-[36px]">
+        <app-safe-width>
+            <app-navbar></app-navbar>
+        </app-safe-width>
+    </div>
+    <app-safe-width>
+        <app-topbar>
+            <li><a href="">全部分类</a></li>
+        </app-topbar>
+    </app-safe-width>
+
+    <div class="bg-[#f1f3f5]">
+        <app-safe-width>
+            <ul class="flex items-center py-[20px] text-[12px]">
+                <li class="hover:text-red-500 cursor-pointer" routerLink="/index">首页></li>
+                <li class="hover:text-red-500 cursor-pointer">手机></li>
+                <li class="hover:text-red-500 cursor-pointer">Mate系列</li>
+            </ul>
+            <div class=" w-full bg-white px-[20px] text-[12px]">
+                <ul class="top-ul">
+                    <li class="flex h-[50px] items-center pt-[10px]">
+                        <div class="w-[130px] text-gray-500">
+                            <span>分类:</span>
+                        </div>
+                        <div class="w-[130px]">
+                            <span class="text-red-500">Mate系列</span>
+                        </div>
+                    </li>
+                    <li class="flex h-[50px] items-center pt-[10px] ">
+                        <div class="w-[130px] text-gray-500">
+                            <span>服务优惠:</span>
+                        </div>
+                        <div>
+                            <span>仅看有货</span>
+                        </div>
+                    </li>
+                    <li class="flex h-[50px] items-center pt-[10px]">
+                        <div class="w-[130px] text-gray-500">
+                            <span>排序:</span>
+                        </div>
+                        <div class="w-[130px]">
+                            <span class="text-red-500">综合</span>
+                        </div>
+                        <div class="w-[130px]">
+                            <span>最新</span>
+                        </div>
+                        <div class="w-[130px]">
+                            <span>评论数</span>
+                        </div>
+                        <div>
+                            <span>价格</span>
+                        </div>
+                        <div class="mx-[20px] relative ">
+                            <div class="money-big-box flex justify-center items-center ">
+                                <div class="border rounded-sm bg-[#fafafb]">
+                                    <!-- <span>￥</span> -->
+                                    <!-- <input type="text" class=" h-[24px] w-[50px]   outline-none" [(ngModel)]="searchParams.startMoney"> -->
+                                    <d-input-number size="sm" [allowEmpty]="true" [(ngModel)]="searchParams.startMoney" [reg]="reg" class="input-number"> </d-input-number>
+                                </div>
+                                <span class="mx-[10px]">-</span>
+                                <div class="border rounded-sm bg-[#fafafb]">
+                                    <!-- <span>￥</span>
+                                    <input type="text" class=" h-[24px] w-[50px] outline-none" [(ngModel)]="searchParams.endMoney"> -->
+                                    <d-input-number size="sm"[allowEmpty]="true" [(ngModel)]="searchParams.endMoney" [reg]="reg" class="input-number"> </d-input-number>
+                                </div>
+                            </div>
+                        </div>
+                        <button class=" py-[4px] px-[10px] rounded-sm bg-red-400 text-white" (click)="searchMoney()">查询</button>
+                    </li>
+                </ul>
+            </div>
+            <div class="grid gap-[10px] grid-cols-4 auto-rows-auto py-[28px]">
+                <div class="phone flex-col justify-center items-center" *ngFor="let item of list "
+                    [routerLink]="['/detail',item.id]">
+                    <div class="w-full flex justify-center">
+                        <img src="http://127.0.0.1:3000{{item.img_url}}" alt="{{item.name}}"
+                            class="h-[192px] w-[180px] object-contain">
+                    </div>
+                    <span class="phone-title mt-[40px] flex justify-center">{{item.name}}</span>
+                    <p class="phone-detail text-gray-500 flex justify-center px-[20px] text-[14px]">
+                        {{item.produce}}</p>
+                    <div class="mt-[15px]">
+                        <span class="flex justify-center ">￥{{item.money}}</span>
+                    </div>
+                    <div class="flex items-center justify-center py-[10px] text-[12px] text-gray-500">
+                        <div class="mr-[10px]">{{item.people}}人评价</div>
+                        <div class="ml-[10px]">{{item.evaluate}}%好评</div>
+                    </div>
+                </div>
+            </div>
+        </app-safe-width>
+        
+    </div>
+    <div class="bg-white">
+        <app-safe-width>
+
+            <app-tabbar></app-tabbar>
+        </app-safe-width>
+    </div>
+</div>

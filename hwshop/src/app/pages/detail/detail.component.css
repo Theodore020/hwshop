@@ -1,0 +1,20 @@
+.top-brand>li:not(:last-child):after{
+    content: ">";
+    font-size: 12px;
+}
+
+.top-brand>li>a{
+   
+    margin-right: 10px;
+}
+.top-brand>li:not(:first-child){
+    margin-left: 10px;
+}
+.selectedSize,.selectedColor{
+    border-color: red;
+    color: red;
+}
+.btn-disabled{
+    border-color: gray;
+    color: gray;
+}

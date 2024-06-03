@@ -1,0 +1,31 @@
+.top-ul>li>div>span:hover {
+  cursor: pointer;
+  --tw-bg-opacity: 1;
+  color: rgb(239 68 68 / var(--tw-bg-opacity));
+}
+
+.phone {
+  background-color: white;
+  grid-row-end: span 2;
+  padding: 0 10px;
+  box-sizing: border-box;
+  padding: 30px 0;
+}
+
+.phone:hover {
+  box-shadow: 0px 0px 5px 5px lightgray;
+  cursor: pointer;
+}
+
+.more-phone>img {
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+}
+
+.phone-detail {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 1;
+  overflow: hidden;
+}

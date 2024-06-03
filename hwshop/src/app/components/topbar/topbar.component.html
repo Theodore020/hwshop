@@ -1,0 +1,24 @@
+<div class="bg-white flex  justify-center items-center">
+    <div #img>
+        <img src="../../../assets/logo_app.png" alt="" class="w-[103px] h-[74px]">
+    </div>
+    <div class="flex justify-between flex-1" #list>
+        <ul class="flex justify-center items-center top-box">
+            <ng-content></ng-content>
+            <li><a href="">华为</a></li>
+            <li><a href="">鸿蒙智行</a></li>
+            <li><a href="">华为智选</a></li>
+            <li><a href="">生态周边</a></li>
+        </ul>
+        <div class="flex justify-center items-center" #search (click)="searchClick()">
+            <span class="iconfont icon-fangdajing text-[26px] text-[#a3a3a3]"></span>
+        </div>
+    </div>
+    <div class="w-[500px] h-[74px] pt-[14px] " #searchBox >
+        <div class="flex justify-center items-center w-full rounded-lg bg-[#f2f2f2] h-[40px]">
+            <span class="iconfont icon-fangdajing text-[14px] text-[#a3a3a3] mx-[10px]"></span>
+            <input type="text" name="" id="" placeholder="搜索商品" class=" outline-none w-full bg-[#f2f2f2] h-[40px]" (keydown.enter)="moveFocusTo()">
+            <span class="mx-[10px]" >X</span>
+        </div>
+    </div>
+</div>

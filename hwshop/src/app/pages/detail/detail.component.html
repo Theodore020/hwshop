@@ -1,0 +1,111 @@
+<div class="h-full w-full">
+    <div class="w-full bg-[#000000] text-[#FFFFFF99] h-[36px]">
+        <app-safe-width>
+            <app-navbar></app-navbar>
+        </app-safe-width>
+    </div>
+    <app-safe-width>
+        <app-topbar>
+            <li><a href="">全部分类</a></li>
+        </app-topbar>
+    </app-safe-width>
+
+
+    <app-safe-width>
+        <ul class="top-brand flex items-center my-[30px] text-[12px] text-gray-500">
+            <li><a href="" [routerLink]="['/index']">首页</a></li>
+            <li><a href="" [routerLink]="['/list',listId]">手机</a></li>
+            <li><a href="" [routerLink]="['/list',listId]">Mate系列 </a></li>
+            <li>{{data.name}} {{sizeText}} {{colorText}}</li>
+        </ul>
+        <div class="flex ">
+            <div class="w-[50%] ">
+                <img src="http://127.0.0.1:3000{{data.img_url}}" alt="" class="w-[560px] h-[560px]">
+            </div>
+            <div class="w-[50%] ">
+                <div class="text-[22px]">HUAWEI {{data.name}} {{sizeText}} {{colorText}}</div>
+                <div class="text-gray-500 text-[14px] my-[20px]">
+                    <span class="text-red-500 font-bold">HUAWEI Care+两年期限时直降200元，直降活动时间3月17日00:00-5月30日23:59</span>
+                    {{data.produce}}
+                </div>
+                <div class="w-full h-[80px] flex ">
+                    <div
+                        class="w-[60%] h-full bg-gradient-to-r from-red-500 to-red-300 text-white rounded-l-lg flex  flex-col justify-center px-[20px] box-border">
+                        <div class="">
+                            <span class="text-[20px]">￥</span>
+                            <span class="text-[24px]">{{data.money}}</span>
+                        </div>
+                        <div>火爆抢购，先到先得</div>
+                    </div>
+                    <div class="w-[40%] bg-[#fbecf0] h-full rounded-r-lg flex justify-center items-center text-red-500">
+                        进行中
+                    </div>
+                </div>
+                <div class="my-[30px] ">
+                    <div class="text-[18px] mb-[20px]">颜色</div>
+                    <div class="grid grid-cols-2 gap-4">
+                        <div class="border boder-black h-[50px] flex justify-center items-center rounded-lg cursor-pointer hover:border-red-400 hover:text-red-400"
+                            *ngFor="let item of colorData let i=index" (click)="clickColor($event,i)"
+                            [ngClass]="{'selectedColor':item.id===selectedColor}">
+                            <span>{{item.name}}</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="my-[30px] ">
+                    <div class="text-[18px] mb-[20px]">版本</div>
+                    <div class="grid grid-cols-2 gap-4">
+                        <div class="border boder-black h-[50px] flex justify-center items-center rounded-lg cursor-pointer hover:border-red-400 hover:text-red-400"
+                            *ngFor="let item of sizeData let i=index" (click)="clickSize($event,i)"
+                            [ngClass]="{'selectedSize':item.id===selectedSize}">
+                            <span>{{item.name}}</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="my-[30px] ">
+                    <div class="text-[18px] mb-[20px]">销售类型</div>
+                    <div class="grid grid-cols-2 gap-4">
+                        <div
+                            class="border boder-black h-[50px] flex justify-center items-center rounded-lg cursor-pointer border-red-500 text-red-500 ">
+                            <span>全款购买</span>
+                        </div>
+                    </div>
+                    <div class="text-[#c5132e] mt-[30px]"><span class="text-[24px]">￥</span><span
+                            class="text-[30px]">{{currentMoney}}</span></div>
+                    <div class="mt-[10px] text-gray-500 text-[14px]">已选{{this.sizeText}} {{colorText}}·全款购买
+                        x{{this.count}}</div>
+                </div>
+                <div class="my-[30px] ">
+                    <div class="flex justify-between">
+                        <div class="flex items-center box-border">
+                            <button
+                                class="border border-gray-500 rounded-full w-[34px] h-[34px] flex justify-center items-center text-[20px] cursor-pointer"
+                                (click)="reduce()" [class.btn-disabled]="count<=1?isDisabled:null">-</button>
+                            <div class="mx-[20px]">{{count}}</div>
+                            <button
+                                class="border border-gray-500 rounded-full w-[34px] h-[34px] flex justify-center items-center text-[20px] cursor-pointer"
+                                (click)="add()">+</button>
+                        </div>
+                        <div class="flex justify-center items-center">
+                            <div class="h-[60px] flex justify-center items-center rounded-3xl cursor-pointer bg-[#f7a645] text-white px-[60px] text-[20px] mx-[10px]"
+                                (click)="goShopCar('success')">
+                                <span> 加入购物车</span>
+                            </div>
+                            <div
+                                class="h-[60px] flex justify-center items-center rounded-3xl cursor-pointer bg-[#ef5441] text-white px-[60px] text-[20px]">
+                                <span [routerLink]="['/settlement']" (click)="goBuy()">立即购买</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </app-safe-width>
+
+    <div class="bg-white">
+        <app-safe-width>
+
+            <app-tabbar></app-tabbar>
+        </app-safe-width>
+    </div>
+</div>
