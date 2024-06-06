@@ -48,6 +48,7 @@ export class DetailComponent implements OnInit {
     html: true,
   };
   isDisabled:boolean=true;
+  selected:boolean= false
   constructor(private route: ActivatedRoute,private dialogService: DialogService,private shopService:ShopServiceService) {
 
   }
@@ -102,11 +103,11 @@ export class DetailComponent implements OnInit {
         },
       },]
     })
-    this.shopData.push(this.data,this.count,this.colorText,this.sizeText)
+    this.shopData.push(this.data,this.count,this.colorText,this.sizeText,this.selected)
     this.shopService.addToCart(this.shopData);
   }
   goBuy(){
-    this.shopData.push(this.data,this.count,this.colorText,this.sizeText)
+    this.shopData.push(this.data,this.count,this.colorText,this.sizeText,this.selected)
     this.shopService.addToCart(this.shopData);
   }
   ngOnInit(): void {

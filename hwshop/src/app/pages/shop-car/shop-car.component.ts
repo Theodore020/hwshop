@@ -8,6 +8,7 @@ import { ShopServiceService } from '../../shop-service.service';
 import { map } from 'rxjs/operators';
 import { RouterModule } from '@angular/router';
 import { NzStepsModule } from 'ng-zorro-antd/steps';
+import { FormsModule } from '@angular/forms';
 @Component({
   selector: 'app-shop-car',
   standalone: true,
@@ -18,15 +19,17 @@ import { NzStepsModule } from 'ng-zorro-antd/steps';
     TabbarComponent,
     CommonModule,
     RouterModule,
-    NzStepsModule
+    NzStepsModule,
+    FormsModule
   ],
   templateUrl: './shop-car.component.html',
   styleUrl: './shop-car.component.css',
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
 export class ShopCarComponent implements OnInit {
+  isAllSelected = false;
   data: any;
-  totalMoney:number=0;
+  totalMoney: number = 0;
   cartItems$ = this.shopservice.cartItems$;
   constructor(private shopservice: ShopServiceService) {
     this.cartItems$.pipe(map(item => {
@@ -36,6 +39,15 @@ export class ShopCarComponent implements OnInit {
       console.log(this.data);
     })
   }
+  deleteItem(id: number) {
+    this.shopservice.deleteFromCart(id)
+    this.totalMoney = 0
+    this.data.map((item: any) => {
+      if (item[4] == true) {
+        this.totalMoney += item[0].money * item[1]
+      }
+    })
+  }
   reduce(id: number) {
     this.data.map((p: any) => {
       if (p[0].id === id) {
@@ -43,9 +55,12 @@ export class ShopCarComponent implements OnInit {
           p[1] = 0
         } else {
           p[1]--
-          this.totalMoney-=p[0].money
+          if (p[4] == true) {
+            this.totalMoney -= p[0].money
+          }
+
         }
-        
+
       }
     })
 
@@ -54,13 +69,45 @@ export class ShopCarComponent implements OnInit {
     this.data.map((p: any) => {
       if (p[0].id === id) {
         p[1]++
-        this.totalMoney+=p[0].money
+        if (p[4] == true) {
+          this.totalMoney += p[0].money
+        }
+
+      }
+    })
+  }
+  toggleAll(checked: boolean) {
+    this.totalMoney = 0
+    this.data.map((item: any) => {
+      if (checked == true) {
+        item[4] = checked
+        this.totalMoney += item[0].money * item[1]
+      } else {
+        item[4] = false
+        this.totalMoney -= item[0].money * item[1]
+        if (this.totalMoney < 0) {
+          this.totalMoney = 0
+        }
+      }
+    })
+  }
+  updateSelection(id: number) {
+    this.isAllSelected = this.data.every((item: any) => item[4] == true);
+    this.data.map((item: any) => {
+      if (item[0].id === id) {
+        if (item[4] == true) {
+          this.totalMoney += item[0].money * item[1]
+        } else {
+          this.totalMoney -= item[0].money * item[1]
+        }
       }
     })
   }
   ngOnInit(): void {
-    this.data.map((item:any)=>{
-      this.totalMoney+=item[0].money*item[1]
+    this.data.map((item: any) => {
+      if (item[4] == true) {
+        this.totalMoney += item[0].money * item[1]
+      }
     })
   }
 }

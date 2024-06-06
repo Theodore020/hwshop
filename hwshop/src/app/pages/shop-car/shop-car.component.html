@@ -31,7 +31,7 @@
             <div class="h-[20px] bg-[#f1f3f5] w-full"></div>
             <div class="flex px-[40px] bg-white justify-center items-center h-[30px]">
                 <label for="check1" class="flex items-center mr-[150px]">
-                    <input type="checkbox" id="check1">
+                    <input type="checkbox" [(ngModel)]="isAllSelected" (change)="toggleAll(isAllSelected)">
                     <span class="text-[14px]">全选</span>
                 </label>
                 <ul class="flex">
@@ -55,7 +55,7 @@
             <div class="h-[10px] bg-[#f1f3f5] w-full"></div>
             <div class="flex px-[40px] bg-white justify-center items-center " *ngFor="let item of data">
                 <div class="flex justify-center items-center mr-[50px]">
-                    <input type="checkbox" id="check1">
+                    <input type="checkbox" [(ngModel)]="item[4]" (ngModelChange)="updateSelection(item[0].id)">
                     <img src="http://127.0.0.1:3000{{item[0].img_url}}" alt="" class="w-[100px] h-[100px]">
                 </div>
 
@@ -75,7 +75,7 @@
                         {{item[0].money*item[1]}}
                     </li>
                     <li class="mx-[40px]">
-                        <button class="text-red-500">删除</button>
+                        <button class="text-red-500" (click)="deleteItem(item[0].id)">删除</button>
                     </li>
                 </ul>
 

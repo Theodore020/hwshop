@@ -14,4 +14,12 @@ export class ShopServiceService {
     cartItems.push(item);
     this.cartItems.next(cartItems);
   }
+  deleteFromCart(id: number) {
+    const cartItems = this.cartItems.value;
+    cartItems.map((item,index)=>{
+      if(item[0].id==id){
+        cartItems.splice(index,1);
+      }
+    })
+  }
 }
